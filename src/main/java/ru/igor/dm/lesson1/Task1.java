@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Task1 {
 
-    public static final int MIN_FIRST_QUARTER = 0;
-    public static final int MAX_FIRST_QUARTER = 15;
-    public static final int MIN_SECOND_QUARTER = 16;
-    public static final int MAX_SECOND_QUARTER = 30;
-    public static final int MIN_THIRD_QUARTER = 31;
-    public static final int MAX_THIRD_QUARTER = 45;
-    public static final int MIN_FOURTH_QUARTER = 46;
-    public static final int MAX_FOURTH_QUARTER = 59;
+    private static final int MIN_FIRST_QUARTER = 0;
+    private static final int MAX_FIRST_QUARTER = 15;
+    private static final int MIN_SECOND_QUARTER = 16;
+    private static final int MAX_SECOND_QUARTER = 30;
+    private static final int MIN_THIRD_QUARTER = 31;
+    private static final int MAX_THIRD_QUARTER = 45;
+    private static final int MIN_FOURTH_QUARTER = 46;
+    private static final int MAX_FOURTH_QUARTER = 59;
 
 
     //В переменной minutes лежит число от 0 до 59.
@@ -40,19 +40,23 @@ public class Task1 {
         }
     }
 
-    public static void whatQuarterByIf(int minutes) {
+    private static void whatQuarterByIf(int minutes) {
 
-        if (minutes >= MIN_FIRST_QUARTER && minutes <= MAX_FIRST_QUARTER) {
+        if (isInRange(minutes, MIN_FIRST_QUARTER, MAX_FIRST_QUARTER)) {
             print(minutes, 1);
-        } else if (minutes >= MIN_SECOND_QUARTER && minutes <= MAX_SECOND_QUARTER) {
+        } else if (isInRange(minutes, MIN_SECOND_QUARTER, MAX_SECOND_QUARTER)) {
             print(minutes, 2);
-        } else if (minutes >= MIN_THIRD_QUARTER && minutes <= MAX_THIRD_QUARTER) {
+        } else if (isInRange(minutes, MIN_THIRD_QUARTER, MAX_THIRD_QUARTER)) {
             print(minutes, 3);
-        } else if (minutes >= MIN_FOURTH_QUARTER && minutes <= MAX_FOURTH_QUARTER) {
+        } else if (isInRange(minutes, MIN_FOURTH_QUARTER, MAX_FOURTH_QUARTER)) {
             print(minutes, 4);
         } else {
             System.out.println("не относится к интервалу от 0 до 59");
         }
+    }
+
+    private static boolean isInRange(int minutes, int min, int max) {
+        return minutes >= min && minutes <= max;
     }
 
     private static void print(int minutes, int num) {
@@ -60,7 +64,7 @@ public class Task1 {
         System.out.printf(pattern, minutes, num);
     }
 
-    public static void whatQuarterByDivision(int minutes) {
+    private static void whatQuarterByDivision(int minutes) {
         if (minutes < 0 || minutes > 59) {
             System.out.println("не входит в диапазон от 0 до 59");
         } else {

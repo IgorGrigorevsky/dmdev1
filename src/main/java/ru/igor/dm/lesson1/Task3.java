@@ -39,14 +39,19 @@ public class Task3 {
         resultCompare(square0, square1);
     }
 
-    public static double calculateSquare(int a, int b) {
+    private static double calculateSquare(int a, int b) {
         return a * (double) b / 2;
     }
 
-    public static void resultCompare(double square1, double square2) {
-        double resultCompare = square1 - square2;
-        String answer = resultCompare > 0 ? ">" :
-                resultCompare < 0 ? "<" : "=";
+    private static void resultCompare(double square1, double square2) {
+        String answer;
+        if (square1 > square2) {
+            answer = ">";
+        } else if (square1 < square2) {
+            answer = "<";
+        } else {
+            answer = "=";
+        }
         System.out.println("first triangle " + answer + " second triangle");
     }
 }
