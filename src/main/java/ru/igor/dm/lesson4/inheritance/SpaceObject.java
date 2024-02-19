@@ -1,29 +1,26 @@
 package ru.igor.dm.lesson4.inheritance;
 
-public class SpaceObject {
+public abstract class SpaceObject {
 
     private double weight;
     private double radius;
     // начальное значение расстояния от центральной точки космоса
-    private final double initialDistance = 0;
+    private double initialDistance;
 
-    // метод расчета диаметра космического объекта, если мы предполагаем, что они круглые
-    public static double getDiameter(double radius) {
+    // метод расчета диаметра космического объекта, если мы предполагаем, что они все круглые
+    public double getDiameter(double radius) {
         return radius * 2;
     }
 
     // метод, сравнивающий массы 2 космических объектов
-    public static boolean massComparison(double weight1, double weight2) {
+    public boolean massComparison(double weight1, double weight2) {
         if (weight1 > weight2) {
             System.out.println("масса первого объекта больше массы второго объекта");
             return true;
         }
         return false;
     }
-
-    public double getWeight() {
-        return weight;
-    }
+    public abstract double getWeight();
 
     public double getRadius() {
         return radius;

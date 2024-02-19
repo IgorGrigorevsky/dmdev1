@@ -1,13 +1,16 @@
 package ru.igor.dm.lesson4.inheritance;
 
 public class Asteroid extends NaturalObject implements SpaceObjects {
-    private double weight;
-    private double radius;
-    // длина хвоста
-    private double tailLength;
-    private double initialDistance;
 
-    public Asteroid(double weight, double radius, double tailLength, double initialDistance) {
+    private final String name;
+    private final double weight;
+    private final double radius;
+    // длина хвоста
+    private final double tailLength;
+    private final double initialDistance;
+
+    public Asteroid(String name, double weight, double radius, double tailLength, double initialDistance) {
+        this.name = name;
         this.weight = weight;
         this.radius = radius;
         this.tailLength = tailLength;
@@ -20,7 +23,19 @@ public class Asteroid extends NaturalObject implements SpaceObjects {
     }
 
     public void explode() {
-        System.out.println("комета взорвалась при падении");
+        System.out.println("астероид взорвался при падении на Землю");
+    }
+
+    @Override
+    public void objectDestruction() {
+        System.out.println("астероид разрушается, сталкиваясь с другими астероидами");
+
+    }
+
+    @Override
+    public void movementInSpace() {
+        System.out.println("астероид вращается вокруг Солнца");
+
     }
 
     @Override
@@ -30,6 +45,10 @@ public class Asteroid extends NaturalObject implements SpaceObjects {
 
     public double getRadius() {
         return radius;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public double getTailLength() {
@@ -42,11 +61,10 @@ public class Asteroid extends NaturalObject implements SpaceObjects {
 
     @Override
     public String toString() {
-        return "Asteroid{" +
-                "weight=" + weight +
-                ", radius=" + radius +
-                ", tailLength=" + tailLength +
-                ", initialDistance=" + initialDistance +
-                '}';
+        return "Астероид " + name +
+                " вес астероида: " + weight +
+                ", радиус астероида: " + radius +
+                ", длина хвоста астероида: =" + tailLength +
+                ", расстояние от начальной точки космоса: " + initialDistance + " световых лет";
     }
 }

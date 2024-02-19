@@ -1,16 +1,18 @@
 package ru.igor.dm.lesson4.inheritance;
 
-public class Comet  extends NaturalObject implements SpaceObjects{
+public class Comet extends NaturalObject implements SpaceObjects {
 
-    private double weight;
-    private double radius;
+    private final String name;
+    private final double weight;
+    private final double radius;
     // длина хвоста
-    private double tailLength;
-    private double percentIce;
-    private double initialDistance;
+    private final double tailLength;
+    private final double percentIce;
+    private final double initialDistance;
 
 
-    public Comet(double weight, double radius, double tailLength, double percentIce, double initialDistance) {
+    public Comet(String name, double weight, double radius, double tailLength, double percentIce, double initialDistance) {
+        this.name = name;
         this.weight = weight;
         this.radius = radius;
         this.tailLength = tailLength;
@@ -18,8 +20,8 @@ public class Comet  extends NaturalObject implements SpaceObjects{
         this.initialDistance = initialDistance;
     }
 
-    public void burnedDown () {
-        System.out.println("комета сгорела при падении");
+    public void burnedDown() {
+        System.out.println("комета сгорела при падении на Землю");
     }
 
     @Override
@@ -28,8 +30,22 @@ public class Comet  extends NaturalObject implements SpaceObjects{
     }
 
     @Override
+    public void movementInSpace() {
+        System.out.println("комета вращается вокруг Солнца");
+    }
+
+    @Override
+    public void objectDestruction() {
+        System.out.println("комета разрушается каждый раз, когда приближается к Солнцу");
+    }
+
+    @Override
     public double getWeight() {
         return weight;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public double getRadius() {
@@ -50,12 +66,11 @@ public class Comet  extends NaturalObject implements SpaceObjects{
 
     @Override
     public String toString() {
-        return "Comet{" +
-                "weight=" + weight +
-                ", radius=" + radius +
-                ", tailLength=" + tailLength +
-                ", percentIce=" + percentIce +
-                ", initialDistance=" + initialDistance +
-                '}';
+        return "Комета " + name +
+                "вес кометы: " + weight +
+                ", радиус кометы: " + radius +
+                ", длина хвоста кометы: " + tailLength +
+                ", процент льда в составе кометы: " + percentIce +
+                ", расстояние от начальной точки космоса: " + initialDistance + " световых лет";
     }
 }
